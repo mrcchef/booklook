@@ -24,6 +24,7 @@ class UserProfile extends StatelessWidget {
               borderRadius: BorderRadius.circular(100),
               child: Image.asset(
                 imagePath,
+                fit: BoxFit.cover,
               ),
             ),
           ),

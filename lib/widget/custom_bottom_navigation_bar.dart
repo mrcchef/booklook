@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:look_book/screens/cart_screen.dart';
+import 'package:look_book/screens/home_page.dart';
 import 'package:look_book/widget/icon_background.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
+  final defaultIndex;
+
+  CustomBottomNavigationBar({required this.defaultIndex});
+
   @override
   _CustomBottomNavigationBarState createState() =>
       _CustomBottomNavigationBarState();
 }
 
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
-  int selectedButton = 0;
+  late int selectedButton;
+
+  @override
+  void initState() {
+    selectedButton = widget.defaultIndex;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +36,10 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           children: [
             InkWell(
               onTap: () {
+                if (selectedButton != 0)
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) => HomePage()),
+                      (route) => false);
                 setState(() {
                   selectedButton = 0;
                 });
@@ -36,16 +51,17 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                     color: selectedButton == 0 ? Colors.black : Colors.white,
                     size: 30,
                   ),
-                  radius: 60,
                   size: 30),
             ),
             InkWell(
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => CartScreen()));
-                setState(() {
-                  selectedButton = 1;
-                });
+                setState(
+                  () async {
+                    selectedButton = await Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => CartScreen()));
+                    ;
+                  },
+                );
               },
               child: IconBackgroud(
                   color: selectedButton == 1 ? Colors.white : Colors.black,
@@ -54,7 +70,6 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                     color: selectedButton == 1 ? Colors.black : Colors.white,
                     size: 30,
                   ),
-                  radius: 60,
                   size: 30),
             ),
             InkWell(
@@ -70,7 +85,6 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                     color: selectedButton == 2 ? Colors.black : Colors.white,
                     size: 30,
                   ),
-                  radius: 60,
                   size: 30),
             ),
             InkWell(
@@ -86,24 +100,8 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                     color: selectedButton == 3 ? Colors.black : Colors.white,
                     size: 30,
                   ),
-                  radius: 60,
                   size: 30),
             ),
-            // Icon(
-            //   Icons.shopping_bag_outlined,
-            //   color: Colors.white,
-            //   size: 30,
-            // ),
-            // Icon(
-            //   Icons.favorite_outline,
-            //   color: Colors.white,
-            //   size: 30,
-            // ),
-            // Icon(
-            //   Icons.account_circle_outlined,
-            //   color: Colors.white,
-            //   size: 30,
-            // ),
           ],
         ),
       ),

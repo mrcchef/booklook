@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:look_book/widget/icon_background.dart';
 
 class CartAppBar extends StatelessWidget with PreferredSizeWidget {
+  final int callingScreenIndex;
+
+  CartAppBar({required this.callingScreenIndex});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,14 +20,18 @@ class CartAppBar extends StatelessWidget with PreferredSizeWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconBackgroud(
-              color: Colors.black,
-              widget: Icon(
-                Icons.arrow_back_ios_new_outlined,
-                color: Colors.white,
+            InkWell(
+              onTap: () {
+                Navigator.of(context).pop(callingScreenIndex);
+              },
+              child: IconBackgroud(
+                color: Colors.black,
+                widget: Icon(
+                  Icons.arrow_back_ios_new_outlined,
+                  color: Colors.white,
+                ),
+                size: 40,
               ),
-              radius: 60,
-              size: 40,
             ),
             Text(
               "Anand's Bag",
@@ -37,7 +45,6 @@ class CartAppBar extends StatelessWidget with PreferredSizeWidget {
               widget: Icon(
                 Icons.notifications_outlined,
               ),
-              radius: 60,
               size: 40,
             ),
           ],

@@ -11,6 +11,10 @@ import 'package:look_book/widget/profile_options_list_widget.dart';
 import 'package:look_book/widget/user_profile.dart';
 
 class HomePage extends StatelessWidget {
+  final int callingScreenIndex;
+
+  HomePage({this.callingScreenIndex = 0});
+
   final List<Clothing> clothingList = [
     Clothing(
         iconPath: "asset/png/Vector.png",
@@ -59,7 +63,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             UserProfile(
-              imagePath: "asset/png/default_user.png",
+              imagePath: "asset/png/user.png",
             ),
             HorizontalClothingListWidget(
               clothingList: clothingList,
@@ -72,7 +76,9 @@ class HomePage extends StatelessWidget {
               text: "Need Assistance ?",
               color: AppColor.GreenColor,
             ),
-            CustomBottomNavigationBar(),
+            CustomBottomNavigationBar(
+              defaultIndex: 0,
+            ),
           ],
         ),
       ),

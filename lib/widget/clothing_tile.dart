@@ -24,7 +24,6 @@ class ClothingTile extends StatelessWidget {
           IconBackgroud(
               color: Colors.white,
               widget: Image.asset(element.iconPath),
-              radius: 60,
               size: 40),
           Text(
             element.title,

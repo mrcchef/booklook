@@ -4,13 +4,12 @@ import 'package:flutter/material.dart';
 class IconBackgroud extends StatelessWidget {
   final Color color;
   final Widget widget;
-  final double radius;
+
   final double size;
 
   IconBackgroud({
     required this.color,
     required this.widget,
-    required this.radius,
     required this.size,
   });
 

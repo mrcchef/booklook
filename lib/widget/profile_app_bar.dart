@@ -22,7 +22,6 @@ class ProfileAppBar extends StatelessWidget with PreferredSizeWidget {
               widget: Icon(
                 Icons.notifications,
               ),
-              radius: 60,
               size: 40,
             ),
           ],
