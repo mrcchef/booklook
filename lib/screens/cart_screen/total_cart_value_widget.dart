@@ -18,7 +18,8 @@ class TotalCartValueWidget extends StatelessWidget {
                 "Total",
                 style: Theme.of(context).textTheme.headline6,
               ),
-              Text("4616", style: Theme.of(context).textTheme.headline6),
+              Text("\u{20B9} 4616",
+                  style: Theme.of(context).textTheme.headline6),
             ],
           ),
           Row(

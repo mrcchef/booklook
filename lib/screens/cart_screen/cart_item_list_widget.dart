@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:look_book/modal/cart_item.dart';
-import 'package:look_book/widget/cart_tile.dart';
+
+import 'cart_tile.dart';
 
 class CartItemListWidget extends StatelessWidget {
   final List<CartItem> cartItemList;

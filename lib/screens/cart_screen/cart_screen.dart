@@ -1,38 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:look_book/Theme/app_color.dart';
 import 'package:look_book/modal/cart_item.dart';
-import 'package:look_book/widget/cart_app_bar.dart';
-import 'package:look_book/widget/cart_item_list_widget.dart';
 import 'package:look_book/widget/custom_bottom_navigation_bar.dart';
-import 'package:look_book/widget/total_cart_value_widget.dart';
+import 'package:look_book/screens/cart_screen/total_cart_value_widget.dart';
+
+import 'cart_app_bar.dart';
+import 'cart_item_list_widget.dart';
 
 class CartScreen extends StatelessWidget {
   final int callingScreenIndex;
 
   CartScreen({this.callingScreenIndex = 0});
-  final List<CartItem> cartItemList = [
-    CartItem(
-        iconPath: "asset/images/breezy_shirt.jpg",
-        title: "Breezy Shirt",
-        description: "House of Rare",
-        price: 2300,
-        size: "XXLL",
-        isFavourite: false),
-    CartItem(
-        iconPath: "asset/images/lenin_chino.jpg",
-        title: "Lenin Chino",
-        description: "HighLander",
-        price: 658,
-        size: "32",
-        isFavourite: true),
-    CartItem(
-        iconPath: "asset/images/white_sneakers.jpg",
-        title: "White Sneakers",
-        description: "Bennetton",
-        price: 1658,
-        size: "9",
-        isFavourite: false),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -56,31 +34,31 @@ class CartScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
+                padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Text(
                   "Items in your bag",
                   style: Theme.of(context).textTheme.headline6,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
+                padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: CartItemListWidget(
                   cartItemList: cartItemList,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
+                padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Container(
                   height: 1,
                   color: AppColor.skinColor,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
+                padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: TotalCartValueWidget(),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
+                padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Center(
                   child: Container(
                     margin: const EdgeInsets.symmetric(vertical: 10),

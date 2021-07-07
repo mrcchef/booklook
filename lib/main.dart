@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:look_book/Theme/theme_text.dart';
-import 'package:look_book/screens/home_page.dart';
+import 'package:look_book/screens/profile_screen/home_page.dart';
 
 void main() {
   runApp(MyApp());

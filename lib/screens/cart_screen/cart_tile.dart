@@ -17,7 +17,7 @@ class CartTile extends StatelessWidget {
         Positioned(
           left: 0,
           child: Container(
-            width: 280,
+            width: 300,
             child: Column(
               children: [
                 Container(
@@ -39,10 +39,10 @@ class CartTile extends StatelessWidget {
                         children: [
                           Text(
                             cartItem.title,
-                            style: Theme.of(context).textTheme.bodyText1,
+                            style: Theme.of(context).textTheme.bodyText2,
                           ),
                           Text(
-                            cartItem.price.toString(),
+                            '\u{20B9} ${cartItem.price.toString()}',
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyText2!
@@ -56,11 +56,29 @@ class CartTile extends StatelessWidget {
                         children: [
                           Text(
                             cartItem.description,
-                            style: Theme.of(context).textTheme.subtitle2,
+                            style: Theme.of(context).textTheme.caption,
                           ),
-                          Text(
-                            cartItem.price.toString(),
-                          ),
+                          Spacer(),
+                          if (cartItem.hasDiscount)
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 4),
+                              child: Text(
+                                cartItem.markedPrice.toString(),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .caption!
+                                    .copyWith(
+                                        decoration: TextDecoration.lineThrough),
+                              ),
+                            ),
+                          if (cartItem.hasDiscount)
+                            Text(
+                              '${cartItem.discountPercent.toString()}% Off',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .caption!
+                                  .copyWith(color: AppColor.orangeColor),
+                            ),
                         ],
                       ),
                     ],

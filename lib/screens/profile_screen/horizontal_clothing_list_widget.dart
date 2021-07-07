@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:look_book/Theme/app_color.dart';
 import 'package:look_book/modal/clothing.dart';
-import 'package:look_book/widget/clothing_tile.dart';
+import 'package:look_book/screens/cart_screen/clothing_tile.dart';
 
 class HorizontalClothingListWidget extends StatelessWidget {
   final List<Clothing> clothingList;

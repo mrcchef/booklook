@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:look_book/screens/cart_screen.dart';
-import 'package:look_book/screens/home_page.dart';
+import 'package:look_book/screens/cart_screen/cart_screen.dart';
+import 'package:look_book/screens/profile_screen/home_page.dart';
 import 'package:look_book/widget/icon_background.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
@@ -36,10 +36,10 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           children: [
             InkWell(
               onTap: () {
-                if (selectedButton != 0)
-                  Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (context) => HomePage()),
-                      (route) => false);
+                if (selectedButton == 0) return;
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                    (route) => false);
                 setState(() {
                   selectedButton = 0;
                 });
@@ -54,13 +54,12 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                   size: 30),
             ),
             InkWell(
-              onTap: () {
+              onTap: () async {
+                if (selectedButton == 1) return;
+                selectedButton = await Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => CartScreen()));
                 setState(
-                  () async {
-                    selectedButton = await Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => CartScreen()));
-                    ;
-                  },
+                  () {},
                 );
               },
               child: IconBackgroud(
@@ -74,6 +73,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             ),
             InkWell(
               onTap: () {
+                if (selectedButton == 2) return;
                 setState(() {
                   selectedButton = 2;
                 });
@@ -89,6 +89,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             ),
             InkWell(
               onTap: () {
+                if (selectedButton == 3) return;
                 setState(() {
                   selectedButton = 3;
                 });
